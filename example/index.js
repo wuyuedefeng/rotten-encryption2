@@ -20,6 +20,6 @@ for (i= 0; i<1000; i++) {
 	}
 }
 
-var code = rotten.encode('abc')
+var code = rotten.encode('mars森')
 console.log(code)
 console.log(rotten.decode(code))

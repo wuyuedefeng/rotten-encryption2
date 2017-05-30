@@ -1,5 +1,5 @@
 // define the alphabet
-var alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789!@#$%&*()-+=_,'
+var alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890~!@#$%^&*()_+-=,.?|":;<>'
 
 // shifts the alphabet over by n, returns resulting array
 function sortAlphabetWithKey(key) {
@@ -7,7 +7,7 @@ function sortAlphabetWithKey(key) {
 	var tmp_alphabet = alphabet.split('').sort(function () {
 		index++
 		if (index % 2 === 0) {
-			return key[index % key.length] > alphabet[index]
+			return key[index % key.length] >= alphabet[index]
 		}
 		return key[index % key.length] < alphabet[index]
 	})
@@ -31,14 +31,17 @@ function remap(input, from, to) {
 }
 
 module.exports = function initWithKey(key) {
+	key = key || ' '
 	var sorted_alphabet = sortAlphabetWithKey(key)
 	return {
 		key: key,
 		encode: function (text) {
+			text = encodeURI(text)
 			return remap(text, alphabet, sorted_alphabet);
 		},
 		decode: function (text) {
-			return remap(text, sorted_alphabet, alphabet);
+			var decodeText = remap(text, sorted_alphabet, alphabet);
+			return decodeURI(decodeText)
 		}
 	}
 }
