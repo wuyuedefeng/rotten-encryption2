@@ -1,6 +1,5 @@
 // define the alphabet
 var alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789!@#$%&*()-+=_,'
-var sorted_alphabet = ''
 
 // shifts the alphabet over by n, returns resulting array
 function sortAlphabetWithKey(key) {
@@ -22,28 +21,24 @@ function remap(input, from, to) {
 
 	for ( var i = 0; i < input_characters.length; i++ ) {
 		var character = input_characters[i];
-
 		if ( to.indexOf(character) !== -1 ) {
 			remapped_string.push(to[from.indexOf(character)]);
 		} else {
 			remapped_string.push(character);
 		}
 	}
-
 	return remapped_string.join('');
 }
 
-module.exports.initWithKey = function(key) {
-	sorted_alphabet = sortAlphabetWithKey(key)
-	return this
+module.exports = function initWithKey(key) {
+	var sorted_alphabet = sortAlphabetWithKey(key)
+	return {
+		key: key,
+		encode: function (text) {
+			return remap(text, alphabet, sorted_alphabet);
+		},
+		decode: function (text) {
+			return remap(text, sorted_alphabet, alphabet);
+		}
+	}
 }
-
-// encode a given string using a give Caesar shift.
-exports.encode = function(input) {
-	return remap(input, alphabet, sorted_alphabet);
-};
-
-// decode a given string using a give Caesar shift.
-exports.decode = function(input) {
-	return remap(input, sorted_alphabet, alphabet);
-};

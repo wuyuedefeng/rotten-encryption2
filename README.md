@@ -1,13 +1,15 @@
 encrypt text with one key
 
- also can decode with the key
+INSTALL
+```
+npm install rotten-encryption2 -S
+```
 
- ### encrypt
+ ### USAGE
  ```
- ```
-
- ### decrypt
- ```
+ var rotten = require('rotten-encryption2')('mars')
+ var code = rotten.encode('abc') // 'L,_'
+ rotten.decode(code) // 'abc'
  ```
 
 
