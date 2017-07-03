@@ -5,14 +5,18 @@ var alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
 function sortAlphabetWithKey(key) {
 	var tmp_alphabet = alphabet.split('')
 	var tmp_key = key.split('')
-	for (let i = alphabet.length; i; i--) {
+	for (var i = alphabet.length; i > 0; i--) {
 		if (i % 2) {
 			if (tmp_key[i % key.length] > tmp_alphabet[i]) {
-				[tmp_alphabet[i - 1], tmp_alphabet[i]] = [tmp_alphabet[i], tmp_alphabet[i - 1]];
+				var tmp =  tmp_alphabet[i]
+				tmp_alphabet[i] = tmp_alphabet[i-1]
+				tmp_alphabet[i-1] = tmp
 			}
 		} else {
 			if (tmp_key[i % key.length] < tmp_alphabet[i]) {
-				[tmp_alphabet[i - 1], tmp_alphabet[i]] = [tmp_alphabet[i], tmp_alphabet[i - 1]];
+				var tmp =  tmp_alphabet[i]
+				tmp_alphabet[i] = tmp_alphabet[i-1]
+				tmp_alphabet[i-1] = tmp
 			}
 		}
 	}
