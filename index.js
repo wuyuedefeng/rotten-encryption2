@@ -1,15 +1,17 @@
 // define the alphabet
-var alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890~!@#$%^&*()_+-=,.?|":;<>'
-
+// var alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890~!@#$%^&*()_+-=,.?|":;<>'
+var alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
 // shifts the alphabet over by n, returns resulting array
 function sortAlphabetWithKey(key) {
 	var index = -1
 	var tmp_alphabet = alphabet.split('').sort(function () {
 		index++
 		if (index % 2 === 0) {
-			return key[index % key.length] >= alphabet[index] ? 1 : -1
+			return key[index % key.length] > alphabet[index] ? 1 : -1
+		} else {
+			return key[index % key.length] > alphabet[index] ? -1 : 1
 		}
-		return key[index % key.length] >= alphabet[index] ? -1 : 1
+		return 0
 	})
 	return tmp_alphabet.join('')
 }
