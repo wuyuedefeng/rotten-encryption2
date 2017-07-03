@@ -3,16 +3,19 @@
 var alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
 // shifts the alphabet over by n, returns resulting array
 function sortAlphabetWithKey(key) {
-	var index = -1
-	var tmp_alphabet = alphabet.split('').sort(function () {
-		index++
-		if (index % 2 === 0) {
-			return key[index % key.length] > alphabet[index] ? 1 : -1
+	var tmp_alphabet = alphabet.split('')
+	var tmp_key = key.split('')
+	for (let i = alphabet.length; i; i--) {
+		if (i % 2) {
+			if (tmp_key[i % key.length] > tmp_alphabet[i]) {
+				[tmp_alphabet[i - 1], tmp_alphabet[i]] = [tmp_alphabet[i], tmp_alphabet[i - 1]];
+			}
 		} else {
-			return key[index % key.length] > alphabet[index] ? -1 : 1
+			if (tmp_key[i % key.length] < tmp_alphabet[i]) {
+				[tmp_alphabet[i - 1], tmp_alphabet[i]] = [tmp_alphabet[i], tmp_alphabet[i - 1]];
+			}
 		}
-		return 0
-	})
+	}
 	return tmp_alphabet.join('')
 }
 
