@@ -7,7 +7,7 @@ function sortAlphabetWithKey(key) {
 	var tmp_alphabet = alphabet.split('').sort(function () {
 		index++
 		if (index % 2 === 0) {
-			return key[index % key.length] >= alphabet[index]
+			return key[index % key.length] >= alphabet[index] ? 1 : -1
 		}
 		return key[index % key.length] < alphabet[index]
 	})
