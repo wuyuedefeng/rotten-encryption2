@@ -24,6 +24,7 @@
 // console.log(code)
 // console.log(rotten.decode(code))
 
-var rotten = require('../index')('mars')
+var rotten = require('../index')('mars', false, 'abcdefghijklmnopqrstuvwxyzABCDEFG1234567890')
 var code = rotten.encode('mars森') // '_>5%1tm1Tp1Tt'
+console.log(code)
 rotten.decode(code) // 'mars森'

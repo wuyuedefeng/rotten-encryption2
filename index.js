@@ -3,13 +3,18 @@
 // shifts the alphabet over by n, returns resulting array
 
 
-module.exports = function initWithKey(key, isUgly) {
+module.exports = function initWithKey(key, isUgly, customAlphabet) {
 	key = key || ' '
-	isUgly = isUgly === false ? false : true
 
-	var alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
-	if (isUgly) {
-		alphabet += '~!@#$%^&*()_+-=,.?|":;<>'
+	var alphabet = ''
+	if (customAlphabet) {
+		alphabet = customAlphabet
+	} else {
+		isUgly = isUgly === false ? false : true
+		alphabet = customAlphabet || 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+		if (isUgly) {
+			alphabet += '~!@#$%^&*()_+-=,.?|":;<>'
+		}
 	}
 
 	function sortAlphabetWithKey(key) {
