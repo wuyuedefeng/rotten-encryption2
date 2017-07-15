@@ -1,3 +1,6 @@
+
+[![npm](https://img.shields.io/npm/v/rotten-encryption2.svg?style=flat-square)](https://www.npmjs.com/package/rotten-encryption2)
+
 encrypt text with one key
 
 INSTALL
