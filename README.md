@@ -7,9 +7,9 @@ npm install rotten-encryption2 -S
 
  ### USAGE
  ```
- var rotten = require('rotten-encryption2')('mars')
- var code = rotten.encode('mars森') // '^R!~nExn3An3E'
- rotten.decode(code) // 'mars森'
+var rotten = require('../index')('mars')
+var code = rotten.encode('mars森') // '_>5%1tm1Tp1Tt'
+rotten.decode(code) // 'mars森'
  ```
 
 
