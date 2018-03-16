@@ -13,7 +13,7 @@ module.exports = function initWithKey(key, isUgly, customAlphabet) {
 		isUgly = isUgly === false ? false : true
 		alphabet = customAlphabet || 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
 		if (isUgly) {
-			alphabet += '~!@#$%^&*()_+-=,.?|":;<>'
+			alphabet += '~!@#$%^&*()_+-=/,.?|":;<>{}[]'
 		}
 	}
 
