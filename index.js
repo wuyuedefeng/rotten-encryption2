@@ -56,12 +56,12 @@ module.exports = function initWithKey(key, isUgly, customAlphabet) {
 	return {
 		key: key,
 		encode: function (text) {
-			text = encodeURI(text)
+			text = encodeURIComponent(text)
 			return remap(text, alphabet, sorted_alphabet);
 		},
 		decode: function (text) {
 			var decodeText = remap(text, sorted_alphabet, alphabet);
-			return decodeURI(decodeText)
+			return decodeURIComponent(decodeText)
 		}
 	}
 }
